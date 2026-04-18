@@ -28,6 +28,7 @@
 - [ ] Define product data model
 - [~] Define variant / option model
 - [~] Decide SEO URL strategy for product options
+- [~] Add client confirmation items for product option SEO handling
 - [ ] Define canonical strategy
 - [ ] Define metadata rules
 - [ ] Define schema markup approach

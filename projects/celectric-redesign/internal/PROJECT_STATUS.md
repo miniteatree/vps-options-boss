@@ -65,6 +65,7 @@ Working recommendation is to position Celectric as an industrial product catalog
 - Product documents management rules
 - Search indexing and autocomplete rules for product variants
 - SEO architecture and sitemap examples
+- Client confirmation items for product option SEO handling
 
 ## Decision Log
 - 2026-04-18: Start project docs with separate external and internal markdown files.

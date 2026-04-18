@@ -79,6 +79,8 @@ This is recommended over full e-commerce checkout for the first release.
 - Are brand assets and product images available?
 - Is there an existing enquiry handling workflow?
 - Does the client want SEO landing pages by industry or brand?
+- Should minor product options remain under one main product page for SEO?
+- Which product variants, if any, should be treated as standalone model pages?
 
 ## Phase Proposal
 
@@ -106,3 +108,6 @@ This is recommended over full e-commerce checkout for the first release.
 
 ## Client Decisions Log
 - Pending
+
+## Additional Confirmation References
+- `PRODUCT_OPTION_SEO_CONFIRMATION.md`
