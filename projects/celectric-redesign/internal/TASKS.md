@@ -26,18 +26,21 @@
 
 ## Product Data and SEO
 - [ ] Define product data model
-- [ ] Define variant / option model
-- [ ] Decide SEO URL strategy for product options
+- [~] Define variant / option model
+- [~] Decide SEO URL strategy for product options
 - [ ] Define canonical strategy
 - [ ] Define metadata rules
 - [ ] Define schema markup approach
 - [ ] Define AI-assisted SEO workflow
 
 ## Search
-- [ ] Define search scope
-- [ ] Define autocomplete result structure
+- [~] Define search scope
+- [~] Define autocomplete result structure
 - [ ] Decide search engine approach
 - [ ] Define filters and facets
+
+## Search Notes
+- [x] Record requirement that autocomplete should surface searchable variant phrases like `product-a-10nm` even when SEO uses the parent product page
 
 ## Documents and Assets
 - [ ] Define product image handling
