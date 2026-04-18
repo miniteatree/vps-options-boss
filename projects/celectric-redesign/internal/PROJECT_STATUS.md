@@ -43,6 +43,8 @@ Working recommendation is to position Celectric as an industrial product catalog
 3. Define page list and modules
 4. Define product data structure
 5. Decide phase 1 scope
+6. Define SEO strategy for product options / variants
+7. Define product document attachment model
 
 ## Risks / Unknowns
 - Unknown number of products and brands
@@ -50,6 +52,8 @@ Working recommendation is to position Celectric as an industrial product catalog
 - Unknown whether pricing is fixed or enquiry-based
 - Unknown internal quotation workflow
 - Unknown whether existing CMS / backend must be reused
+- Unknown variant complexity across products
+- Unknown number and types of downloadable product documents
 
 ## Suggested Deliverables Next
 - Sitemap
@@ -57,6 +61,8 @@ Working recommendation is to position Celectric as an industrial product catalog
 - RFQ flow
 - Database / content model suggestion
 - Phase-based roadmap
+- Variant URL and SEO rules
+- Product documents management rules
 
 ## Decision Log
 - 2026-04-18: Start project docs with separate external and internal markdown files.
