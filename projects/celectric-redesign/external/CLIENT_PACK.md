@@ -25,6 +25,7 @@ Celectric should be rebuilt as an industrial product catalog and enquiry platfor
 - Brands
 - Industries / Solutions
 - Resources
+- Blog / Insights
 - About
 - Contact / Request Quote
 
@@ -34,6 +35,7 @@ Celectric should be rebuilt as an industrial product catalog and enquiry platfor
 - Brand highlights
 - Featured products
 - Industry / solution sections
+- Latest blog / insights section
 - Strong enquiry CTA
 
 ### 4. Product Listing Page
@@ -85,6 +87,9 @@ This is recommended over full e-commerce checkout for the first release.
 - `/solutions/{solution}`
 - `/resources`
 - `/resources/{resource-type}`
+- `/blog`
+- `/blog/{category}`
+- `/blog/{post-slug}`
 - `/about`
 - `/contact`
 - `/request-quote`
@@ -142,6 +147,34 @@ Example:
 
 These cases may be included in sitemap if confirmed as standalone product pages.
 
+## Blog / Insights Recommendation
+A blog / insights section should be included in the planning scope.
+
+Recommended use cases:
+- technical education articles
+- product comparison articles
+- application / industry guides
+- company updates
+- case studies or project highlights
+
+Recommended benefits:
+- improves SEO coverage for informational searches
+- builds technical credibility and trust
+- supports internal linking to products, brands, and solutions
+- helps convert research traffic into enquiries
+
+Recommended core pages:
+- blog listing page
+- blog category page
+- article detail page
+
+Recommended article features:
+- featured image
+- author and publish date
+- category and controlled tags
+- related products / related articles
+- CTA blocks such as Request Quote or Contact Sales
+
 ## Product Document Handling
 A product may support multiple downloadable files.
 
@@ -165,6 +198,7 @@ Recommended handling:
 - Required languages
 - Need for brand pages
 - Need for resources center / datasheet downloads
+- Need for blog / insights section
 - Need for WhatsApp or direct sales contact CTA
 - Whether minor product options should remain under one main product page for SEO
 - Which product variants, if any, should be treated as standalone model pages
@@ -176,6 +210,7 @@ Please confirm the preferred direction:
 - [ ] Phase 1 should focus on RFQ / enquiry rather than full checkout
 - [ ] Brand pages should be included
 - [ ] Resources / document pages should be included
+- [ ] Blog / insights pages should be included
 - [ ] Minor options should stay within one main product page by default
 - [ ] Search should support variant-style keywords such as `product-a-10nm`
 - [ ] Variant-style search results may lead to the main product page with the option preselected
@@ -198,6 +233,7 @@ Please confirm the preferred direction:
 - Category pages
 - Product detail pages
 - Brand pages
+- Blog / insights base feature
 - Quote / enquiry flow
 - Mobile responsive improvements
 

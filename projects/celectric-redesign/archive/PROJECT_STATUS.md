@@ -11,6 +11,7 @@ Working recommendation is to position Celectric as an industrial product catalog
 - Initial recommendation shared
 - Direction leaning toward catalog + RFQ rather than full e-commerce
 - User requested a dedicated folder with separate internal and external markdown files
+- Blog / insights feature added into planning scope
 
 ## Folder Structure
 - `external/CLIENT_DISCUSSION.md`
@@ -27,12 +28,13 @@ Working recommendation is to position Celectric as an industrial product catalog
 ## Internal Working Assumptions
 - Celectric is better suited to enquiry-first conversion in phase 1
 - Product discovery, specifications, and product detail pages are key
-- Search, brand pages, and category structure will be important parts of the redesign
+- Search, brand pages, category structure, and blog / insights content will be important parts of the redesign
 
 ## Work Completed
 - Framed redesign direction using Instrumart as structural reference
 - Recommended quote cart / RFQ approach
 - Created project documentation structure for external and internal use
+- Added blog / insights feature into planning documents and scope
 
 ## Next Recommended Actions
 1. Confirm business model
@@ -42,9 +44,10 @@ Working recommendation is to position Celectric as an industrial product catalog
 2. Define sitemap
 3. Define page list and modules
 4. Define product data structure
-5. Decide phase 1 scope
-6. Define SEO strategy for product options / variants
-7. Define product document attachment model
+5. Define blog content model and editorial flow
+6. Decide phase 1 scope
+7. Define SEO strategy for product options / variants
+8. Define product document attachment model
 
 ## Risks / Unknowns
 - Unknown number of products and brands
@@ -60,6 +63,7 @@ Working recommendation is to position Celectric as an industrial product catalog
 - Page-by-page module breakdown
 - RFQ flow
 - Database / content model suggestion
+- Blog content model and editorial workflow
 - Phase-based roadmap
 - Variant URL and SEO rules
 - Product documents management rules
@@ -69,6 +73,7 @@ Working recommendation is to position Celectric as an industrial product catalog
 
 ## Decision Log
 - 2026-04-18: Start project docs with separate external and internal markdown files.
+- 2026-04-20: Add blog / insights feature into planning scope for SEO, authority building, and top-of-funnel traffic.
 
 ## Notes
 Keep external file clean and client-facing.

@@ -16,6 +16,7 @@ Working recommendation is to position Celectric as an industrial product catalog
 - Documentation structure created for external and internal use
 - Search, variant, SEO, and sitemap logic documented
 - Admin panel and AI-assisted SEO requirements documented
+- Blog / insights feature should be included in planning as part of content marketing and trust-building
 
 ## End-to-End Workflow
 1. Business direction confirmation
@@ -37,6 +38,7 @@ Working recommendation is to position Celectric as an industrial product catalog
 - Keep product SEO structure clean and avoid exploding minor option pages
 - Support strong search and autocomplete using variant keywords
 - Build a strong admin panel with SEO and document management support
+- Add a blog / insights feature to support SEO, expertise positioning, and long-tail lead capture
 - Use AI as SEO assistance, not automatic truth
 
 ## Product Option and SEO Rules
@@ -106,6 +108,9 @@ Recommended result behavior:
 - AI assistance for SEO drafts
 - Enquiry management
 - Odoo sync visibility
+- Blog post management
+- Blog categories / tags
+- Author, publish scheduling, and featured post controls
 
 ## AI SEO Principles
 - AI generates drafts, not final truth
@@ -126,6 +131,7 @@ Recommended result behavior:
 - Framework recommendation
 - Odoo integration plan
 - Product data model
+- Blog content model and publishing workflow
 - Page-by-page module breakdown
 - Implementation roadmap
 - Client confirmation round
@@ -148,6 +154,7 @@ Recommended result behavior:
 - [ ] Define category page modules
 - [ ] Define brand page modules
 - [ ] Define product detail page modules
+- [ ] Define blog listing and article page modules
 - [ ] Define resources center structure
 
 ### Product Data and SEO
@@ -158,6 +165,7 @@ Recommended result behavior:
 - [ ] Define canonical strategy
 - [ ] Define metadata rules
 - [ ] Define schema markup approach
+- [ ] Define blog taxonomy and article SEO rules
 - [ ] Define AI-assisted SEO workflow
 
 ### Search
@@ -186,11 +194,47 @@ Recommended result behavior:
 - [ ] Define product management workflow
 - [ ] Define enquiry management workflow
 - [ ] Define SEO management workflow
+- [ ] Define blog editorial workflow
 
 ### Delivery
 - [ ] Prepare client discussion pack
 - [ ] Prepare internal architecture notes
 - [ ] Prepare implementation roadmap
+- [ ] Add blog feature recommendation to planning deliverables
+
+## Blog / Insights Recommendation
+### Why it should be included
+- Supports long-tail SEO beyond product pages
+- Helps Celectric publish application guides, comparisons, and technical explainers
+- Builds trust with B2B buyers who research before sending enquiries
+- Creates internal linking opportunities into products, brands, and solutions pages
+
+### Recommended scope
+- Blog listing page
+- Blog article detail page
+- Categories and tags
+- Featured article support
+- Related posts section
+- CTA blocks inside articles such as Request Quote or Contact Sales
+- Optional connection between articles and products / brands / solutions
+
+### Suggested URL structure
+- `/blog`
+- `/blog/{category}`
+- `/blog/{post-slug}`
+
+### Content types to support
+- Technical guides
+- Product comparisons
+- Industry application articles
+- Company updates
+- Case studies or project highlights
+
+### Editorial / SEO rules
+- Blog should not replace structured product and resources content, it should complement them
+- Articles should target informational search intent while leading readers toward product or enquiry actions
+- Each article should support SEO fields, OG image, author, publish date, and internal links
+- Tag usage should stay controlled to avoid thin archive pages
 
 ## Progress Timeline
 - 2026-04-18
@@ -201,6 +245,10 @@ Recommended result behavior:
   - Confirmed strong need for admin panel and AI-assisted SEO.
   - Documented variant URL, search, and sitemap handling.
   - Added client confirmation materials for product option SEO.
+- 2026-04-20
+  - Added blog / insights feature to planning scope.
+  - Recorded recommendation that blog should support SEO, authority building, and conversion assists.
+  - Added blog-related planning items for sitemap, admin, and content workflow.
 
 ## Note
 Use this file as the main internal resume point for the project.
