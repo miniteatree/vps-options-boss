@@ -35,6 +35,9 @@ Working recommendation is to position Celectric as an industrial product catalog
 - Recommended quote cart / RFQ approach
 - Created project documentation structure for external and internal use
 - Added blog / insights feature into planning documents and scope
+- Added blog page module breakdown
+- Added blog content model and CMS field recommendations
+- Added blog relation rules for products, brands, and solutions
 
 ## Next Recommended Actions
 1. Confirm business model
@@ -60,20 +63,20 @@ Working recommendation is to position Celectric as an industrial product catalog
 
 ## Suggested Deliverables Next
 - Sitemap
-- Page-by-page module breakdown
 - RFQ flow
 - Database / content model suggestion
-- Blog content model and editorial workflow
 - Phase-based roadmap
 - Variant URL and SEO rules
 - Product documents management rules
 - Search indexing and autocomplete rules for product variants
 - SEO architecture and sitemap examples
 - Client confirmation items for product option SEO handling
+- Implementation-ready functional spec for blog + resources relationship if needed
 
 ## Decision Log
 - 2026-04-18: Start project docs with separate external and internal markdown files.
 - 2026-04-20: Add blog / insights feature into planning scope for SEO, authority building, and top-of-funnel traffic.
+- 2026-04-20: Add blog module breakdown, content model, editorial workflow, and relationship rules.
 
 ## Notes
 Keep external file clean and client-facing.

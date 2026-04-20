@@ -154,7 +154,7 @@ Recommended result behavior:
 - [ ] Define category page modules
 - [ ] Define brand page modules
 - [ ] Define product detail page modules
-- [ ] Define blog listing and article page modules
+- [x] Define blog listing and article page modules
 - [ ] Define resources center structure
 
 ### Product Data and SEO
@@ -165,7 +165,7 @@ Recommended result behavior:
 - [ ] Define canonical strategy
 - [ ] Define metadata rules
 - [ ] Define schema markup approach
-- [ ] Define blog taxonomy and article SEO rules
+- [x] Define blog taxonomy and article SEO rules
 - [ ] Define AI-assisted SEO workflow
 
 ### Search
@@ -194,7 +194,7 @@ Recommended result behavior:
 - [ ] Define product management workflow
 - [ ] Define enquiry management workflow
 - [ ] Define SEO management workflow
-- [ ] Define blog editorial workflow
+- [x] Define blog editorial workflow
 
 ### Delivery
 - [ ] Prepare client discussion pack
@@ -249,6 +249,9 @@ Recommended result behavior:
   - Added blog / insights feature to planning scope.
   - Recorded recommendation that blog should support SEO, authority building, and conversion assists.
   - Added blog-related planning items for sitemap, admin, and content workflow.
+  - Added blog page module breakdown.
+  - Added blog content model, taxonomy, SEO, and editorial workflow guidance.
+  - Added relationship rules linking blog content with products, brands, and solutions.
 
 ## Note
 Use this file as the main internal resume point for the project.
