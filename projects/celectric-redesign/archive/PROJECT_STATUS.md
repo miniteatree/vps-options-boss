@@ -38,6 +38,9 @@ Working recommendation is to position Celectric as an industrial product catalog
 - Added blog page module breakdown
 - Added blog content model and CMS field recommendations
 - Added blog relation rules for products, brands, and solutions
+- Added client presentation markdown and slide-style presentation page
+- Added Cloudflare R2 roughly 30GB storage note for documents and downloadable assets
+- Split planning into client version, development requirements, and phase plan documents
 
 ## Next Recommended Actions
 1. Confirm business model
@@ -72,6 +75,9 @@ Working recommendation is to position Celectric as an industrial product catalog
 - SEO architecture and sitemap examples
 - Client confirmation items for product option SEO handling
 - Implementation-ready functional spec for blog + resources relationship if needed
+- Client review presentation workflow from markdown
+- Cloudflare R2 storage and secure document delivery planning
+- Dedicated client, development, and phase planning documents
 
 ## Decision Log
 - 2026-04-18: Start project docs with separate external and internal markdown files.
