@@ -1,17 +1,17 @@
-# Celectric Client Version
+# Celectric Client Review
 
-## Purpose
-Client-facing summary for review, confirmation, and presentation.
+## Goal
+Present the recommended direction in a clean, easy-to-review format.
 
 ## Recommended Direction
 Celectric should be positioned as an industrial product catalog plus enquiry platform.
 
-## What the client should understand
-- The site is not just a company profile site.
-- The site should help buyers find products fast.
-- The site should support RFQ / enquiry conversion.
-- Blog / Insights should be included to support SEO and trust.
+## What the client needs to know
+- The site should help buyers find products quickly.
+- RFQ / enquiry should be the main conversion path.
+- Blog / Insights should be included for SEO and trust.
 - Product documents should be delivered through secure download links.
+- Cloudflare R2 should be used for document storage, about 30GB.
 
 ## Main Navigation
 - Products
@@ -22,47 +22,47 @@ Celectric should be positioned as an industrial product catalog plus enquiry pla
 - About
 - Contact / Request Quote
 
-## Homepage Content
+## Homepage
 - search bar
 - category entry points
 - brand highlights
 - featured products
 - solutions section
-- latest blog / insights section
+- latest blog section
 - clear enquiry CTA
 
-## Product Page Summary
-- product title and model
+## Product Page
+- title and model
 - brand
 - images
-- key specifications
-- datasheet / downloads
+- key specs
+- downloads
 - related products
-- FAQ / Q&A block
+- FAQ / Q&A
 - RFQ button
 
 ## Product Option Rule
-- minor options should stay on one main product page
+- minor options stay on one main product page
 - query param states can be used for variant selection
 - only distinct model-level variants should get separate pages
 
 ## Documents Rule
-- documents should be delivered by secure download links
+- use secure download links
 - links should be time-limited and non-guessable
-- email should contain links, not big file attachments
+- email should contain links, not attachments
 
 ## Hosting Summary
-- Mock / preview: Cloudflare Pages, RM0
-- Production: Hetzner VPS + Cloudflare, RM30 to RM80 per month
-- Storage: Cloudflare R2 for about 30GB of files
-- Domain: RM60 to RM120 per year
+- Mock / preview, Cloudflare Pages, RM0
+- Production, Hetzner VPS + Cloudflare, RM30 to RM80 per month
+- Storage, Cloudflare R2 about 30GB
+- Domain, RM60 to RM120 per year
 
 ## Phase Summary
 ### Short term
 - confirm direction
 - finalise sitemap
 - confirm page list
-- confirm client approval points
+- confirm approval points
 
 ### Mid term
 - build homepage
@@ -73,13 +73,13 @@ Celectric should be positioned as an industrial product catalog plus enquiry pla
 - build document delivery flow
 
 ### Long term
-- search improvement
+- better search
 - Odoo sync
 - user accounts
 - checkout if needed
 - CRM integration
 
-## Client Confirmation Checklist
+## Client Checklist
 - [ ] industrial catalog + enquiry platform direction
 - [ ] RFQ first, not full checkout
 - [ ] brand pages included

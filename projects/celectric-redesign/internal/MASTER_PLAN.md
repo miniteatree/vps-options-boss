@@ -17,7 +17,6 @@ Working recommendation is to position Celectric as an industrial product catalog
 - Search, variant, SEO, and sitemap logic documented
 - Admin panel and AI-assisted SEO requirements documented
 - Blog / insights feature should be included in planning as part of content marketing and trust-building
-- Client presentation assets should be generated from markdown so sales / review updates stay easy to maintain
 - Cloudflare R2 should be considered for roughly 30GB of downloadable product documents and presentation assets
 
 ## End-to-End Workflow
@@ -41,7 +40,7 @@ Working recommendation is to position Celectric as an industrial product catalog
 - Support strong search and autocomplete using variant keywords
 - Build a strong admin panel with SEO and document management support
 - Add a blog / insights feature to support SEO, expertise positioning, and long-tail lead capture
-- Use markdown-first client presentation generation so review material can be updated without design rebuilds
+- Use markdown-first presentation generation where needed, but keep the client-facing version single and simple
 - Use Cloudflare R2 for roughly 30GB of document storage and secure file delivery
 - Use AI as SEO assistance, not automatic truth
 
@@ -115,7 +114,6 @@ Recommended result behavior:
 - Blog post management
 - Blog categories / tags
 - Author, publish scheduling, and featured post controls
-- Presentation / review page generation from markdown
 - Cloudflare R2 storage for document assets and downloadable files
 
 ## AI SEO Principles
@@ -139,7 +137,6 @@ Recommended result behavior:
 - Product data model
 - Blog content model and publishing workflow
 - Page-by-page module breakdown
-- Client presentation markdown and slide export workflow
 - Hosting / storage recommendation including Cloudflare R2
 - Client version document
 - Development requirements document
