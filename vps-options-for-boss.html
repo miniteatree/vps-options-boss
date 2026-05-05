@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VPS Proposal Options</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fbff;
+      --text: #18212f;
+      --muted: #667085;
+      --line: #dbe3ef;
+      --primary: #0f62fe;
+      --primary-soft: #eaf2ff;
+      --success: #0e9f6e;
+      --warning: #b7791f;
+      --shadow: 0 18px 50px rgba(15, 35, 95, 0.08);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 64px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #123a8f 55%, #1d4ed8 100%);
+      color: #fff;
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.08;
+      margin: 18px 0 14px;
+      max-width: 820px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: rgba(255,255,255,0.84);
+      font-size: 1.02rem;
+    }
+
+    .hero-grid,
+    .mini-grid,
+    .option-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 28px;
+    }
+
+    .mini-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin: 24px 0 0;
+    }
+
+    .stat,
+    .panel,
+    .option-card,
+    .highlight {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.14);
+      color: #fff;
+      padding: 18px 20px;
+      box-shadow: none;
+    }
+
+    .stat .label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 8px;
+    }
+
+    .stat .value {
+      font-size: 1.45rem;
+      font-weight: 800;
+    }
+
+    section {
+      margin-top: 28px;
+    }
+
+    .panel {
+      padding: 28px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-head p,
+    .muted { color: var(--muted); }
+
+    .bullet-list {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .bullet-list li + li { margin-top: 8px; }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+    }
+
+    .summary-table th,
+    .summary-table td {
+      padding: 16px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .summary-table th {
+      background: #f8fafc;
+      font-size: 0.86rem;
+      color: #475467;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .summary-table tr:last-child td { border-bottom: none; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: #eef2ff;
+      color: #3730a3;
+    }
+
+    .badge.recommended {
+      background: #e8fff5;
+      color: var(--success);
+    }
+
+    .price {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .option-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 20px;
+    }
+
+    .option-card {
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .option-card.recommended {
+      border: 2px solid var(--primary);
+      background: linear-gradient(180deg, #ffffff 0%, var(--surface-soft) 100%);
+    }
+
+    .option-card.recommended::before {
+      content: "Recommended";
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .option-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .option-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 12px;
+    }
+
+    .price-block {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .price-block small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #f3f6fb;
+      color: #344054;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .pros-cons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .highlight {
+      padding: 22px 24px;
+      background: linear-gradient(135deg, #eff6ff 0%, #f8fffc 100%);
+      border: 1px solid #cfe0ff;
+    }
+
+    .highlight strong {
+      color: #0b3ba7;
+    }
+
+    code {
+      background: #eef2f7;
+      padding: 2px 7px;
+      border-radius: 7px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    .footnote {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .mini-grid,
+      .option-grid,
+      .pros-cons {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head,
+      .option-top {
+        display: block;
+      }
+
+      .price-block {
+        text-align: left;
+        margin-top: 10px;
+      }
+
+      .summary-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .hero,
+      .panel,
+      .option-card,
+      .highlight {
+        border-radius: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div class="eyebrow">Infrastructure Proposal</div>
+      <h1>VPS Options for CodeIgniter Frontend / Full Migration</h1>
+      <p>
+        A practical comparison for moving the current CodeIgniter system to VPS in stages.
+        The goal is to keep cost controlled, handle up to roughly <strong>200GB of images</strong>,
+        and leave room for future growth without forcing a risky full migration on day one.
+      </p>
+
+      <div class="hero-grid">
+        <div class="stat">
+          <div class="label">Current System</div>
+          <div class="value">CodeIgniter 3</div>
+        </div>
+        <div class="stat">
+          <div class="label">Image Volume</div>
+          <div class="value">~200GB</div>
+        </div>
+        <div class="stat">
+          <div class="label">Recommended Path</div>
+          <div class="value">C2 + Cloudflare R2</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="mini-grid">
+      <div class="panel">
+        <h3>Frontend First</h3>
+        <p class="muted">Lowest-risk rollout by moving only the public-facing site to VPS first.</p>
+      </div>
+      <div class="panel">
+        <h3>Admin Can Stay</h3>
+        <p class="muted">Admin panel and backend operations can remain on cPanel temporarily.</p>
+      </div>
+      <div class="panel">
+        <h3>Storage Matters</h3>
+        <p class="muted">Large image storage should ideally be separated from VPS local disk.</p>
+      </div>
+      <div class="panel">
+        <h3>Future-Safe</h3>
+        <p class="muted">Object storage gives a cleaner path for scale and later migration.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <h2>Current Situation</h2>
+          <p>Key constraints affecting the hosting decision.</p>
+        </div>
+      </div>
+      <ul class="bullet-list">
+        <li>Current system is built on <strong>CodeIgniter 3</strong>.</li>
+        <li>Images are currently stored locally and referenced through database paths.</li>
+        <li>Total image storage can reach around <strong>200GB</strong>.</li>
+        <li>A staged migration is possible: <strong>frontend on VPS first</strong>, while admin remains on cPanel.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <h2>Options Summary</h2>
+          <p>Quick cost and fit comparison.</p>
+        </div>
+      </div>
+
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Use Case</th>
+            <th>Monthly Cost</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>NVMe C2</strong></td>
+            <td>Frontend only on VPS</td>
+            <td class="price">RM60 / month</td>
+            <td>Best if images remain on cPanel subdomain temporarily.</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>NVMe C2 + Cloudflare R2</strong><br />
+              <span class="badge recommended">Recommended</span>
+            </td>
+            <td>Frontend on VPS + object storage for images</td>
+            <td class="price">~RM73 / month</td>
+            <td>Best balance of cost, flexibility, and future scaling.</td>
+          </tr>
+          <tr>
+            <td><strong>NVMe C2 + Backblaze B2</strong></td>
+            <td>Frontend on VPS + lower-cost object storage</td>
+            <td class="price">~RM65 / month</td>
+            <td>Cheaper storage, but public traffic / egress terms need care.</td>
+          </tr>
+          <tr>
+            <td><strong>NVMe C2 + Wasabi</strong></td>
+            <td>Frontend on VPS + S3-compatible storage</td>
+            <td class="price">~RM66 / month</td>
+            <td>Affordable, but billing rules should be verified first.</td>
+          </tr>
+          <tr>
+            <td><strong>NVMe C6</strong></td>
+            <td>Full migration to VPS</td>
+            <td class="price">RM222 / month</td>
+            <td>Frontend, admin, database, and images all move to VPS.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <h2>Detailed Options</h2>
+          <p>Practical pros, tradeoffs, and where each option fits.</p>
+        </div>
+      </div>
+
+      <div class="option-grid">
+        <article class="option-card">
+          <div class="option-top">
+            <div>
+              <h3>Option 1: NVMe C2</h3>
+              <p class="muted">Best for a low-risk frontend-first move.</p>
+            </div>
+            <div class="price-block">
+              <div class="price">RM60 / month</div>
+              <small>100GB NVMe · 4GB RAM · 2 vCPU</small>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Frontend on VPS</span>
+            <span class="tag">Admin stays on cPanel</span>
+            <span class="tag">Fastest to deploy</span>
+          </div>
+          <ul class="bullet-list">
+            <li>Move only the user-facing frontend to VPS.</li>
+            <li>Images can still be served from cPanel via <code>img.domain.com</code>.</li>
+            <li>Suitable when the immediate goal is speed and minimal change.</li>
+          </ul>
+          <div class="pros-cons">
+            <div>
+              <strong>Pros</strong>
+              <ul class="bullet-list">
+                <li>Cheapest entry point</li>
+                <li>Low migration risk</li>
+                <li>Quick deployment</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Cons</strong>
+              <ul class="bullet-list">
+                <li>Still depends on cPanel</li>
+                <li>Storage architecture remains split</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="option-card recommended">
+          <div class="option-top">
+            <div>
+              <h3>Option 2: NVMe C2 + Cloudflare R2</h3>
+              <p class="muted">Strong balance between cost, flexibility, and future growth.</p>
+            </div>
+            <div class="price-block">
+              <div class="price">~RM73 / month</div>
+              <small>RM60 VPS + ~RM13 storage @ 200GB</small>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Object storage</span>
+            <span class="tag">Scalable image delivery</span>
+            <span class="tag">Cleaner future migration path</span>
+          </div>
+          <ul class="bullet-list">
+            <li>VPS runs the frontend, while large images move to object storage.</li>
+            <li>Estimated R2 cost: <strong>USD0.015 / GB-month</strong>.</li>
+            <li>At 200GB, storage is about <strong>USD3 / month</strong> (~RM13).</li>
+            <li>At 300GB, total estimated cost is around <strong>~RM79 / month</strong>.</li>
+          </ul>
+          <div class="pros-cons">
+            <div>
+              <strong>Pros</strong>
+              <ul class="bullet-list">
+                <li>Does not fill VPS disk with images</li>
+                <li>Good fit for public image delivery</li>
+                <li>More scalable than local-only storage</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Cons</strong>
+              <ul class="bullet-list">
+                <li>Needs object storage integration</li>
+                <li>Image URLs may need adjustment</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="option-card">
+          <div class="option-top">
+            <div>
+              <h3>Option 2B: NVMe C2 + Backblaze B2</h3>
+              <p class="muted">Very attractive on storage price alone.</p>
+            </div>
+            <div class="price-block">
+              <div class="price">~RM65 / month</div>
+              <small>RM60 VPS + ~RM4–5 storage</small>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Low storage cost</span>
+            <span class="tag">Worth evaluating</span>
+          </div>
+          <ul class="bullet-list">
+            <li>Public pricing found: <strong>USD5 / TB / month</strong>.</li>
+            <li>Estimated storage cost for 200GB is around <strong>RM4–5 / month</strong>.</li>
+          </ul>
+          <div class="pros-cons">
+            <div>
+              <strong>Pros</strong>
+              <ul class="bullet-list">
+                <li>Very low storage cost</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Cons</strong>
+              <ul class="bullet-list">
+                <li>Egress / traffic terms should be checked carefully</li>
+                <li>Not the safest default for public-heavy image delivery without review</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="option-card">
+          <div class="option-top">
+            <div>
+              <h3>Option 2C: NVMe C2 + Wasabi</h3>
+              <p class="muted">Simple S3-compatible alternative with affordable pricing.</p>
+            </div>
+            <div class="price-block">
+              <div class="price">~RM66 / month</div>
+              <small>RM60 VPS + ~RM6 storage</small>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">S3-compatible</span>
+            <span class="tag">Affordable</span>
+          </div>
+          <ul class="bullet-list">
+            <li>Public pricing found: <strong>USD6.99 / TB / month</strong>.</li>
+            <li>Estimated storage cost for 200GB is around <strong>RM6 / month</strong>.</li>
+          </ul>
+          <div class="pros-cons">
+            <div>
+              <strong>Pros</strong>
+              <ul class="bullet-list">
+                <li>Cheap and workable</li>
+                <li>Easy fit if S3 compatibility is preferred</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Cons</strong>
+              <ul class="bullet-list">
+                <li>Billing details / minimums should be verified before committing</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="option-card" style="grid-column: 1 / -1;">
+          <div class="option-top">
+            <div>
+              <h3>Option 3: NVMe C6</h3>
+              <p class="muted">For full migration when centralization matters more than cost.</p>
+            </div>
+            <div class="price-block">
+              <div class="price">RM222 / month</div>
+              <small>400GB NVMe · 16GB RAM · 8 vCPU</small>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Full migration</span>
+            <span class="tag">All-in-one VPS</span>
+            <span class="tag">Highest monthly cost</span>
+          </div>
+          <ul class="bullet-list">
+            <li>Move frontend, admin, database, and images fully to VPS.</li>
+            <li>Architecture becomes simpler after migration because everything is centralized.</li>
+          </ul>
+          <div class="pros-cons">
+            <div>
+              <strong>Pros</strong>
+              <ul class="bullet-list">
+                <li>Single environment to manage</li>
+                <li>Cleaner stack after full migration</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Cons</strong>
+              <ul class="bullet-list">
+                <li>Much higher monthly cost</li>
+                <li>Local VPS disk can still become a limit as image storage grows</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <h2>Recommendation</h2>
+      <p>
+        <strong>Best balance for now: NVMe C2 + Cloudflare R2.</strong>
+        This keeps VPS cost low, avoids storing a large image library on local VPS disk,
+        and gives a more future-proof setup if the system grows later.
+      </p>
+      <ul class="bullet-list">
+        <li>Low monthly VPS cost</li>
+        <li>Images do not consume VPS local storage</li>
+        <li>Better long-term scalability</li>
+        <li>Allows frontend-first migration without forcing immediate admin migration</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Notes</h2>
+      <ul class="bullet-list">
+        <li>Exabytes NVMe C2 pricing referenced from: <code>https://www.exabytes.my/servers/nvme-vps</code></li>
+        <li>Object storage pricing is based on public list pricing and may vary depending on usage and billing rules.</li>
+        <li>This page can be further converted into a cleaner client-facing quotation if needed.</li>
+      </ul>
+      <p class="footnote">Prepared for internal review.</p>
+    </section>
+  </div>
+</body>
+</html>
