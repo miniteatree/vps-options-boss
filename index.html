@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VPS Proposal Options</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.5; color: #222; max-width: 980px; margin: 40px auto; padding: 0 20px; }
+    h1, h2, h3 { color: #111; }
+    .muted { color: #666; }
+    .card { border: 1px solid #ddd; border-radius: 10px; padding: 20px; margin: 18px 0; }
+    .recommended { border-color: #0a66c2; background: #f4f9ff; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; vertical-align: top; }
+    th { background: #f6f6f6; }
+    .price { font-size: 1.1rem; font-weight: 700; }
+    ul { margin-top: 8px; }
+    code { background: #f3f3f3; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>VPS Options for CodeIgniter Frontend / Full Migration</h1>
+  <p class="muted">Prepared for internal review. Pricing based on Exabytes NVMe VPS page and public object storage pricing pages checked today.</p>
+
+  <h2>Current Situation</h2>
+  <ul>
+    <li>Current system: CodeIgniter 3</li>
+    <li>Images stored locally, with database path records</li>
+    <li>Image size can reach around <strong>200GB</strong></li>
+    <li>Possible staged migration: frontend on VPS first, admin remains on cPanel</li>
+  </ul>
+
+  <h2>Options Summary</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Use Case</th>
+        <th>Monthly Cost</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>NVMe C2</strong></td>
+        <td>Frontend only on VPS</td>
+        <td class="price">RM60 / month</td>
+        <td>Best if images still remain on cPanel subdomain temporarily.</td>
+      </tr>
+      <tr>
+        <td><strong>NVMe C2 + Cloudflare R2</strong></td>
+        <td>Frontend on VPS + object storage for images</td>
+        <td class="price">~RM73 / month (for 200GB)</td>
+        <td>Recommended balance of cost, flexibility, and future scaling.</td>
+      </tr>
+      <tr>
+        <td><strong>NVMe C2 + Backblaze B2</strong></td>
+        <td>Frontend on VPS + cheaper object storage</td>
+        <td class="price">~RM65 / month (for 200GB)</td>
+        <td>Lower storage cost, but public image traffic / egress needs extra care.</td>
+      </tr>
+      <tr>
+        <td><strong>NVMe C2 + Wasabi</strong></td>
+        <td>Frontend on VPS + S3-compatible storage</td>
+        <td class="price">~RM66 / month (for 200GB)</td>
+        <td>Cheap and workable, but should verify billing rules before committing.</td>
+      </tr>
+      <tr>
+        <td><strong>NVMe C6</strong></td>
+        <td>Full migration to VPS</td>
+        <td class="price">RM222 / month</td>
+        <td>Frontend, admin, database, and images all moved to VPS.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card">
+    <h2>Option 1: NVMe C2 (Frontend Only)</h2>
+    <ul>
+      <li>Price: <strong>RM60 / month</strong></li>
+      <li>Specs: 100GB NVMe, 4GB RAM, 2 vCPU</li>
+      <li>Use case: only move user-facing frontend to VPS</li>
+      <li>Admin stays on cPanel</li>
+      <li>Images can continue to be served from cPanel via subdomain such as <code>img.domain.com</code></li>
+    </ul>
+    <p><strong>Pros:</strong> cheapest entry point, low migration risk, fast to deploy.</p>
+    <p><strong>Cons:</strong> still depends on cPanel for image delivery and possibly admin/database.</p>
+  </div>
+
+  <div class="card recommended">
+    <h2>Option 2: NVMe C2 + Cloudflare R2 <span class="muted">(Recommended)</span></h2>
+    <ul>
+      <li>VPS: <strong>RM60 / month</strong></li>
+      <li>R2 storage: <strong>USD0.015 / GB-month</strong></li>
+      <li>Estimated for 200GB: about <strong>USD3 / month</strong> (~RM13)</li>
+      <li><strong>Total estimated: ~RM73 / month</strong></li>
+      <li>If 300GB: about <strong>~RM79 / month</strong></li>
+    </ul>
+    <p><strong>Pros:</strong> suitable for public image delivery, scalable, and avoids filling VPS disk with large image storage.</p>
+    <p><strong>Cons:</strong> requires object storage integration and image URL adjustment.</p>
+  </div>
+
+  <div class="card">
+    <h2>Option 2B: NVMe C2 + Backblaze B2</h2>
+    <ul>
+      <li>VPS: <strong>RM60 / month</strong></li>
+      <li>Storage pricing found: <strong>USD5 / TB / month</strong></li>
+      <li>Estimated for 200GB: about <strong>RM4–5 / month</strong></li>
+      <li><strong>Total estimated: ~RM65 / month</strong></li>
+    </ul>
+    <p><strong>Pros:</strong> very low storage cost.</p>
+    <p><strong>Cons:</strong> image traffic / egress terms should be checked carefully before using for public frontend image serving.</p>
+  </div>
+
+  <div class="card">
+    <h2>Option 2C: NVMe C2 + Wasabi</h2>
+    <ul>
+      <li>VPS: <strong>RM60 / month</strong></li>
+      <li>Storage pricing found: <strong>USD6.99 / TB / month</strong></li>
+      <li>Estimated for 200GB: about <strong>RM6 / month</strong></li>
+      <li><strong>Total estimated: ~RM66 / month</strong></li>
+    </ul>
+    <p><strong>Pros:</strong> affordable S3-compatible storage.</p>
+    <p><strong>Cons:</strong> billing details / minimums should be verified first.</p>
+  </div>
+
+  <div class="card">
+    <h2>Option 3: NVMe C6 (Full Migration)</h2>
+    <ul>
+      <li>Price: <strong>RM222 / month</strong></li>
+      <li>Specs: 400GB NVMe, 16GB RAM, 8 vCPU</li>
+      <li>Use case: move frontend, admin, database, and images fully to VPS</li>
+    </ul>
+    <p><strong>Pros:</strong> all systems centralized in one VPS, simpler architecture after migration.</p>
+    <p><strong>Cons:</strong> much higher monthly cost, and local VPS disk may still become limiting if image storage keeps growing.</p>
+  </div>
+
+  <h2>Recommendation</h2>
+  <p><strong>Best balance for now:</strong> <strong>NVMe C2 + Cloudflare R2</strong>.</p>
+  <ul>
+    <li>Low VPS cost</li>
+    <li>Images do not consume VPS local disk</li>
+    <li>Good path for future growth</li>
+    <li>Can migrate frontend first without forcing full admin migration immediately</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <ul>
+    <li>Exabytes NVMe C2 pricing captured from: <code>https://www.exabytes.my/servers/nvme-vps</code></li>
+    <li>Object storage pricing is based on public list pricing and may vary by usage and billing terms.</li>
+    <li>If needed, this can be converted into client-facing quotation wording later.</li>
+  </ul>
+</body>
+</html>
