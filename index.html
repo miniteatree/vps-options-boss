@@ -3,430 +3,345 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VPS Options Comparison for Boss</title>
+  <title>Hosting Proposal</title>
   <style>
     :root {
-      --bg: #f7f9fc;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fbff;
+      --text: #18212f;
+      --muted: #667085;
       --line: #dbe3ef;
-      --blue: #2563eb;
-      --blue-soft: #eef4ff;
-      --green: #0f766e;
-      --amber: #b45309;
+      --primary: #0f62fe;
+      --primary-soft: #eaf2ff;
+      --success: #0e9f6e;
+      --shadow: 0 18px 50px rgba(15, 35, 95, 0.08);
+      --radius: 20px;
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.6;
     }
-    .wrap {
-      max-width: 1180px;
+
+    .container {
+      width: min(980px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 32px 18px 56px;
+      padding: 40px 0 64px;
     }
-    h1, h2, h3 { margin: 0 0 10px; }
-    p { margin: 0 0 10px; }
-    .muted { color: var(--muted); }
-    .hero, .panel, .summary-card, .note {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #123a8f 55%, #1d4ed8 100%);
+      color: #fff;
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
     }
-    .hero { padding: 24px; margin-bottom: 18px; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-top: 18px;
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
     }
-    .summary-card { padding: 16px; }
-    .summary-card strong { font-size: 1.05rem; }
-    .tag {
-      display: inline-block;
-      padding: 5px 10px;
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
       border-radius: 999px;
+      background: rgba(255,255,255,0.12);
       font-size: 12px;
       font-weight: 700;
-      background: var(--blue-soft);
-      color: var(--blue);
-      margin-bottom: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
-    .tag.green { background: #ecfdf5; color: var(--green); }
-    .tag.amber { background: #fff7ed; color: var(--amber); }
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 20px 0 14px;
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      margin: 18px 0 14px;
+      max-width: 760px;
     }
-    .tab-btn {
+
+    .hero p {
+      max-width: 760px;
+      color: rgba(255,255,255,0.84);
+      font-size: 1.02rem;
+    }
+
+    .hero-grid,
+    .detail-grid,
+    .benefit-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 28px;
+    }
+
+    .detail-grid,
+    .benefit-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 28px;
+    }
+
+    .stat,
+    .panel,
+    .highlight {
+      background: var(--surface);
       border: 1px solid var(--line);
-      background: #fff;
-      color: var(--text);
-      border-radius: 999px;
-      padding: 10px 14px;
-      cursor: pointer;
-      font-weight: 700;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
-    .tab-btn.active {
-      background: var(--blue);
+
+    .stat {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.14);
       color: #fff;
-      border-color: var(--blue);
+      padding: 18px 20px;
+      box-shadow: none;
     }
-    .panel {
-      display: none;
-      padding: 20px;
-      margin-bottom: 16px;
+
+    .stat .label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 8px;
     }
-    .panel.active { display: block; }
-    table {
+
+    .stat .value {
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    section { margin-top: 28px; }
+
+    .panel { padding: 28px; }
+
+    .muted { color: var(--muted); }
+
+    .bullet-list {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .bullet-list li + li { margin-top: 8px; }
+
+    .summary-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 14px;
-      font-size: 14px;
-    }
-    th, td {
+      overflow: hidden;
+      border-radius: 16px;
       border: 1px solid var(--line);
-      padding: 10px;
+    }
+
+    .summary-table th,
+    .summary-table td {
+      padding: 16px;
       text-align: left;
       vertical-align: top;
+      border-bottom: 1px solid var(--line);
     }
-    th { background: #f8fafc; }
-    .price { font-weight: 700; white-space: nowrap; }
-    .recommend {
-      margin-top: 14px;
-      padding: 14px;
-      border: 1px solid #bfdbfe;
-      background: var(--blue-soft);
-      border-radius: 12px;
+
+    .summary-table th {
+      background: #f8fafc;
+      font-size: 0.86rem;
+      color: #475467;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      width: 34%;
     }
-    ul { margin: 10px 0 0 18px; }
-    .note { padding: 18px; margin-top: 18px; }
-    .sources li { word-break: break-all; }
+
+    .summary-table tr:last-child td,
+    .summary-table tr:last-child th { border-bottom: none; }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 8px 0;
+    }
+
+    .highlight {
+      padding: 30px;
+      background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: #e8fff5;
+      color: var(--success);
+      margin-bottom: 12px;
+    }
+
     @media (max-width: 760px) {
-      table { font-size: 13px; }
-      .wrap { padding: 20px 12px 40px; }
+      .hero-grid,
+      .detail-grid,
+      .benefit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        width: min(100%, calc(100% - 20px));
+        padding: 20px 0 40px;
+      }
+
+      .hero,
+      .panel,
+      .highlight {
+        padding: 22px;
+      }
+
+      .summary-table th,
+      .summary-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .summary-table th {
+        border-bottom: none;
+        padding-bottom: 6px;
+      }
+
+      .summary-table td {
+        padding-top: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <section class="hero">
-      <div class="tag">Client proposal</div>
-      <h1>Hosting Proposal for CodeIgniter 3 Migration</h1>
-      <p class="muted">This proposal outlines the recommended hosting setup for the project, with focus on stability, scalability, and predictable monthly cost.</p>
-      <div class="grid">
-        <div class="summary-card">
-          <strong>Current app</strong>
-          <p class="muted">CodeIgniter 3</p>
+  <div class="container">
+    <header class="hero">
+      <div class="eyebrow">Client Proposal</div>
+      <h1>Hosting Solution Proposal</h1>
+      <p>
+        We propose using <strong>Exabytes VPS + Cloudflare</strong> as the hosting and file delivery solution
+        for the project. This setup is designed to provide a stable foundation, support growing image storage,
+        and maintain a clear monthly hosting cost.
+      </p>
+
+      <div class="hero-grid">
+        <div class="stat">
+          <div class="label">Recommended Solution</div>
+          <div class="value">Exabytes VPS + Cloudflare</div>
         </div>
-        <div class="summary-card">
-          <strong>Current image setup</strong>
-          <p class="muted">Images stored locally, DB stores file paths</p>
+        <div class="stat">
+          <div class="label">Storage Allocation</div>
+          <div class="value">300GB</div>
         </div>
-        <div class="summary-card">
-          <strong>Storage target</strong>
-          <p class="muted">300GB for image storage and future growth</p>
-        </div>
-        <div class="summary-card">
-          <strong>Migration style</strong>
-          <p class="muted">Can be staged: frontend first, admin stays on cPanel</p>
+        <div class="stat">
+          <div class="label">Monthly Fee</div>
+          <div class="value">RM150</div>
         </div>
       </div>
+    </header>
+
+    <section class="highlight">
+      <div class="badge">Recommended Package</div>
+      <h2>Proposed Monthly Hosting Package</h2>
+      <div class="price">RM150 / month</div>
+      <p>
+        This proposal includes <strong>Exabytes VPS hosting</strong> together with <strong>Cloudflare</strong>
+        for file storage and content delivery, with a total storage allocation of <strong>300GB</strong>.
+      </p>
     </section>
 
-    <section class="hero">
-      <h2>Quick Recommendation</h2>
-      <div class="grid">
-        <div class="summary-card">
-          <div class="tag green">Lowest risk</div>
-          <strong>Exabytes NVMe C2</strong>
-          <p>Frontend only on VPS, keep admin + images on current side first.</p>
-          <p class="price">RM60 / month</p>
-        </div>
-        <div class="summary-card">
-          <div class="tag">Best balance</div>
-          <strong>Exabytes VPS + Cloudflare</strong>
-          <p>Chosen setup with 300GB storage for frontend + image delivery.</p>
-          <p class="price">RM150 / month for 300GB</p>
-        </div>
-        <div class="summary-card">
-          <div class="tag amber">Full move</div>
-          <strong>Mid-tier VPS</strong>
-          <p>Suitable if frontend, admin, DB and files all move together.</p>
-          <p class="price">Usually starts around RM180–RM230+ / month</p>
-        </div>
-      </div>
-    </section>
-
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="exabytes">Exabytes</button>
-      <button class="tab-btn" data-tab="digitalocean">DigitalOcean</button>
-      <button class="tab-btn" data-tab="vultr">Vultr</button>
-      <button class="tab-btn" data-tab="lightsail">AWS Lightsail</button>
-      <button class="tab-btn" data-tab="storage">Object Storage</button>
-    </div>
-
-    <section id="exabytes" class="panel active">
-      <h2>Exabytes NVMe VPS</h2>
-      <p class="muted">Local billing in RM, very straightforward for Malaysia. Good if you want the simplest purchasing path.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Plan</th>
-            <th>Specs</th>
-            <th>Price</th>
-            <th>Best fit for this project</th>
-          </tr>
-        </thead>
+    <section class="panel">
+      <h2>Solution Overview</h2>
+      <table class="summary-table">
         <tbody>
           <tr>
-            <td><strong>NVMe C2</strong></td>
-            <td>2 vCPU, 4GB RAM, 100GB NVMe, 4TB transfer</td>
-            <td class="price">RM60 / mo</td>
-            <td>Frontend only on VPS</td>
+            <th>Hosting Platform</th>
+            <td>Exabytes VPS</td>
           </tr>
           <tr>
-            <td><strong>NVMe C4</strong></td>
-            <td>4 vCPU, 8GB RAM, 200GB NVMe, 8TB transfer</td>
-            <td class="price">RM114 / mo</td>
-            <td>More breathing room if traffic grows, but still tight if images stay local</td>
+            <th>Storage / Delivery Layer</th>
+            <td>Cloudflare</td>
           </tr>
           <tr>
-            <td><strong>NVMe C6</strong></td>
-            <td>8 vCPU, 16GB RAM, 400GB NVMe, 16TB transfer</td>
-            <td class="price">RM222 / mo</td>
-            <td>Full migration candidate</td>
+            <th>Storage Capacity</th>
+            <td>300GB</td>
+          </tr>
+          <tr>
+            <th>Monthly Amount</th>
+            <td><strong>RM150 / month</strong></td>
           </tr>
         </tbody>
       </table>
-      <div class="recommend">
-        <strong>Recommendation:</strong> Exabytes provides straightforward local billing in RM and a practical foundation for this project.
+    </section>
+
+    <section class="detail-grid">
+      <div class="panel">
+        <h3>What is included</h3>
+        <ul class="bullet-list">
+          <li>VPS hosting environment on Exabytes</li>
+          <li>Cloudflare integration for file storage and delivery</li>
+          <li>300GB storage allocation for project files and images</li>
+          <li>Monthly hosting package at a fixed quoted rate</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>Purpose of this setup</h3>
+        <ul class="bullet-list">
+          <li>Provide a reliable hosting platform for the system</li>
+          <li>Support growing file and image storage requirements</li>
+          <li>Keep the server focused on application performance</li>
+          <li>Maintain a scalable structure for future expansion</li>
+        </ul>
       </div>
     </section>
 
-    <section id="digitalocean" class="panel">
-      <h2>DigitalOcean Droplets</h2>
-      <p class="muted">Global provider, easy dev workflow, Singapore region available. Pricing below uses standard droplet tiers shown on the public pricing page.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Plan</th>
-            <th>Specs</th>
-            <th>USD</th>
-            <th>Approx RM*</th>
-            <th>Best fit</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Basic</strong></td>
-            <td>2 vCPU, 4GB RAM, 80GB SSD</td>
-            <td class="price">USD24 / mo</td>
-            <td>~RM113</td>
-            <td>Frontend only</td>
-          </tr>
-          <tr>
-            <td><strong>Basic</strong></td>
-            <td>4 vCPU, 8GB RAM, 160GB SSD</td>
-            <td class="price">USD48 / mo</td>
-            <td>~RM226</td>
-            <td>Heavier frontend or partial all-in-one</td>
-          </tr>
-          <tr>
-            <td><strong>Basic</strong></td>
-            <td>8 vCPU, 16GB RAM, 320GB SSD</td>
-            <td class="price">USD96 / mo</td>
-            <td>~RM451</td>
-            <td>Full migration if using one box</td>
-          </tr>
-          <tr>
-            <td><strong>Storage-Optimized</strong></td>
-            <td>2 vCPU, 16GB RAM, 300GB SSD</td>
-            <td class="price">USD131 / mo</td>
-            <td>~RM616</td>
-            <td>Only if disk-heavy architecture is required</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="recommend">
-        <strong>Note:</strong> DigitalOcean remains a solid platform, but it is less aligned with the current cost target for this project.
+    <section class="benefit-grid">
+      <div class="panel">
+        <h3>Key benefits</h3>
+        <ul class="bullet-list">
+          <li>Clear and predictable monthly cost</li>
+          <li>Better handling of large file storage</li>
+          <li>Suitable for ongoing project growth</li>
+          <li>Professional hosting structure for production use</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>Commercial summary</h3>
+        <p class="muted">The proposed package is presented as a direct client solution rather than a technical comparison.</p>
+        <ul class="bullet-list">
+          <li>Selected solution: Exabytes VPS + Cloudflare</li>
+          <li>Allocated storage: 300GB</li>
+          <li>Total monthly fee: RM150</li>
+        </ul>
       </div>
     </section>
 
-    <section id="vultr" class="panel">
-      <h2>Vultr</h2>
-      <p class="muted">Another global provider. The public pricing page is pretty clear and has both general and CPU-optimized lines.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Plan type</th>
-            <th>Specs</th>
-            <th>USD</th>
-            <th>Approx RM*</th>
-            <th>Best fit</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>High Performance</strong></td>
-            <td>2 vCPU, 4GB RAM, 100GB storage</td>
-            <td class="price">USD24 / mo</td>
-            <td>~RM113</td>
-            <td>Frontend only</td>
-          </tr>
-          <tr>
-            <td><strong>High Performance</strong></td>
-            <td>4 vCPU, 8GB RAM, 180GB storage</td>
-            <td class="price">USD48 / mo</td>
-            <td>~RM226</td>
-            <td>Stronger frontend / medium app load</td>
-          </tr>
-          <tr>
-            <td><strong>High Performance</strong></td>
-            <td>8 vCPU, 16GB RAM, 350GB storage</td>
-            <td class="price">USD96 / mo</td>
-            <td>~RM451</td>
-            <td>One-box full migration candidate</td>
-          </tr>
-          <tr>
-            <td><strong>CPU Optimized</strong></td>
-            <td>2 vCPU, 4GB RAM, 50GB storage</td>
-            <td class="price">USD40 / mo</td>
-            <td>~RM188</td>
-            <td>Only if compute matters more than storage</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="recommend">
-        <strong>Note:</strong> Vultr is a valid alternative, although it is not clearly more cost-effective than the selected Exabytes option.
-      </div>
-    </section>
-
-    <section id="lightsail" class="panel">
-      <h2>AWS Lightsail</h2>
-      <p class="muted">Simpler than raw AWS EC2, but still AWS ecosystem. Good if future AWS integration matters.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Plan</th>
-            <th>Specs</th>
-            <th>USD</th>
-            <th>Approx RM*</th>
-            <th>Best fit</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Lightsail</strong></td>
-            <td>2 vCPU, 4GB RAM, 80GB SSD, 4TB transfer</td>
-            <td class="price">USD20 / mo</td>
-            <td>~RM94</td>
-            <td>Frontend only</td>
-          </tr>
-          <tr>
-            <td><strong>Lightsail</strong></td>
-            <td>2 vCPU, 8GB RAM, 160GB SSD, 5TB transfer</td>
-            <td class="price">USD40 / mo</td>
-            <td>~RM188</td>
-            <td>Frontend plus some growth room</td>
-          </tr>
-          <tr>
-            <td><strong>Lightsail</strong></td>
-            <td>2 vCPU, 2GB RAM, 60GB SSD, 3TB transfer</td>
-            <td class="price">USD10 / mo</td>
-            <td>~RM47</td>
-            <td>Very small / testing only</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="recommend">
-        <strong>Note:</strong> AWS Lightsail offers attractive entry pricing, but may introduce more operational complexity compared with the selected setup.
-      </div>
-    </section>
-
-    <section id="storage" class="panel">
-      <h2>Object Storage Options (to avoid filling VPS disk with ~200GB images)</h2>
-      <p class="muted">This is the selected direction: Exabytes VPS with Cloudflare, sized for 300GB so the VPS stays focused on the app while files stay off local disk.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Storage provider</th>
-            <th>Public price basis</th>
-            <th>300GB target</th>
-            <th>VPS + storage example</th>
-            <th>Comment</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Cloudflare R2</strong></td>
-            <td>USD0.015 / GB-month</td>
-            <td>300GB selected</td>
-            <td>Exabytes VPS + Cloudflare = <strong>RM150 / mo</strong></td>
-            <td>Selected package for this quotation</td>
-          </tr>
-          <tr>
-            <td><strong>Backblaze B2</strong></td>
-            <td>USD5 / TB-month</td>
-            <td>~USD1 (~RM5)</td>
-            <td>Exabytes C2 + B2 ≈ <strong>RM65 / mo</strong></td>
-            <td>Cheap storage, but review egress/public delivery pattern carefully</td>
-          </tr>
-          <tr>
-            <td><strong>Wasabi</strong></td>
-            <td>USD6.99 / TB-month</td>
-            <td>~USD1.4 (~RM6)</td>
-            <td>Exabytes C2 + Wasabi ≈ <strong>RM66 / mo</strong></td>
-            <td>S3-compatible and simple, but check minimum billing rules</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="recommend">
-        <strong>Recommended solution:</strong> <strong>Exabytes VPS + Cloudflare</strong> with <strong>300GB storage</strong> at a total of <strong>RM150/month</strong>.
-      </div>
-    </section>
-
-    <section class="note">
-      <h2>Bottom Line</h2>
-      <ul>
-        <li><strong>Cheapest simple route:</strong> Exabytes NVMe C2 at RM60/month, keep images/admin where they are first.</li>
-        <li><strong>Chosen route:</strong> Exabytes VPS + Cloudflare at RM150/month for 300GB storage.</li>
-        <li><strong>If comparing non-Exabytes VPS:</strong> AWS Lightsail looks attractive on entry price, while DigitalOcean and Vultr are solid but not clearly cheaper after converting to RM.</li>
-        <li><strong>If images stay on local VPS disk:</strong> cost looks okay at first, but storage growth becomes the long-term problem.</li>
+    <section class="panel">
+      <h2>Notes</h2>
+      <ul class="bullet-list">
+        <li>This proposal is prepared as the recommended hosting package for the project.</li>
+        <li>Monthly charges are based on the agreed package scope of Exabytes VPS + Cloudflare with 300GB storage.</li>
+        <li>Any future upgrade beyond the quoted scope can be reviewed separately if needed.</li>
       </ul>
-    </section>
-
-    <section class="note">
-      <h2>Sources</h2>
-      <ul class="sources">
-        <li>https://www.exabytes.my/servers/nvme-vps</li>
-        <li>https://www.digitalocean.com/pricing/droplets</li>
-        <li>https://www.vultr.com/pricing/</li>
-        <li>https://aws.amazon.com/lightsail/pricing/</li>
-        <li>https://developers.cloudflare.com/r2/pricing/</li>
-      </ul>
-      <p class="muted">*Approximate RM conversion is shown for reference only. Actual billing may vary depending on exchange rate and provider terms.</p>
     </section>
   </div>
-
-  <script>
-    const buttons = document.querySelectorAll('.tab-btn');
-    const panels = document.querySelectorAll('.panel');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        panels.forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
