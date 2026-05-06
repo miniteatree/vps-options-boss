@@ -118,9 +118,9 @@
 <body>
   <div class="wrap">
     <section class="hero">
-      <div class="tag">Internal draft for boss review</div>
-      <h1>VPS Comparison for CodeIgniter 3 Migration</h1>
-      <p class="muted">Purpose: compare a few VPS providers, not just Exabytes, and show which options fit (1) frontend-only on VPS, (2) VPS + object storage, and (3) full migration.</p>
+      <div class="tag">Client proposal</div>
+      <h1>Hosting Proposal for CodeIgniter 3 Migration</h1>
+      <p class="muted">This proposal outlines the recommended hosting setup for the project, with focus on stability, scalability, and predictable monthly cost.</p>
       <div class="grid">
         <div class="summary-card">
           <strong>Current app</strong>
@@ -131,8 +131,8 @@
           <p class="muted">Images stored locally, DB stores file paths</p>
         </div>
         <div class="summary-card">
-          <strong>Image size</strong>
-          <p class="muted">Around 200GB and can keep growing</p>
+          <strong>Storage target</strong>
+          <p class="muted">300GB for image storage and future growth</p>
         </div>
         <div class="summary-card">
           <strong>Migration style</strong>
@@ -152,9 +152,9 @@
         </div>
         <div class="summary-card">
           <div class="tag">Best balance</div>
-          <strong>Exabytes NVMe C2 + Cloudflare R2</strong>
-          <p>Frontend on VPS, images moved out from local disk to object storage.</p>
-          <p class="price">~RM73 / month for 200GB</p>
+          <strong>Exabytes VPS + Cloudflare</strong>
+          <p>Chosen setup with 300GB storage for frontend + image delivery.</p>
+          <p class="price">RM150 / month for 300GB</p>
         </div>
         <div class="summary-card">
           <div class="tag amber">Full move</div>
@@ -207,7 +207,7 @@
         </tbody>
       </table>
       <div class="recommend">
-        <strong>My read:</strong> Exabytes is still the easiest boss-friendly option. If you want fast approval with local RM pricing, this is the cleanest story.
+        <strong>Recommendation:</strong> Exabytes provides straightforward local billing in RM and a practical foundation for this project.
       </div>
     </section>
 
@@ -256,7 +256,7 @@
         </tbody>
       </table>
       <div class="recommend">
-        <strong>My read:</strong> good platform, but for this project it becomes less attractive if the goal is “cheap and simple for boss approval”. It makes more sense when paired with object storage instead of relying on local disk.
+        <strong>Note:</strong> DigitalOcean remains a solid platform, but it is less aligned with the current cost target for this project.
       </div>
     </section>
 
@@ -305,7 +305,7 @@
         </tbody>
       </table>
       <div class="recommend">
-        <strong>My read:</strong> Vultr is competitive, but once converted to RM it is no longer obviously cheaper than Exabytes. Still worth mentioning as an alternative global option.
+        <strong>Note:</strong> Vultr is a valid alternative, although it is not clearly more cost-effective than the selected Exabytes option.
       </div>
     </section>
 
@@ -347,19 +347,19 @@
         </tbody>
       </table>
       <div class="recommend">
-        <strong>My read:</strong> attractive on sticker price, but management complexity can rise faster if the team does not already like working in AWS.
+        <strong>Note:</strong> AWS Lightsail offers attractive entry pricing, but may introduce more operational complexity compared with the selected setup.
       </div>
     </section>
 
     <section id="storage" class="panel">
       <h2>Object Storage Options (to avoid filling VPS disk with ~200GB images)</h2>
-      <p class="muted">This is the part that matters most if image volume keeps growing. The VPS becomes app server only; images live outside local disk.</p>
+      <p class="muted">This is the selected direction: Exabytes VPS with Cloudflare, sized for 300GB so the VPS stays focused on the app while files stay off local disk.</p>
       <table>
         <thead>
           <tr>
             <th>Storage provider</th>
             <th>Public price basis</th>
-            <th>200GB est.</th>
+            <th>300GB target</th>
             <th>VPS + storage example</th>
             <th>Comment</th>
           </tr>
@@ -368,9 +368,9 @@
           <tr>
             <td><strong>Cloudflare R2</strong></td>
             <td>USD0.015 / GB-month</td>
-            <td>~USD3 (~RM13)</td>
-            <td>Exabytes C2 + R2 ≈ <strong>RM73 / mo</strong></td>
-            <td>Best balance for public file delivery and future growth</td>
+            <td>300GB selected</td>
+            <td>Exabytes VPS + Cloudflare = <strong>RM150 / mo</strong></td>
+            <td>Selected package for this quotation</td>
           </tr>
           <tr>
             <td><strong>Backblaze B2</strong></td>
@@ -389,7 +389,7 @@
         </tbody>
       </table>
       <div class="recommend">
-        <strong>My read:</strong> if boss wants “not too expensive, but scalable”, then <strong>NVMe C2 + Cloudflare R2</strong> is still the cleanest recommendation.
+        <strong>Recommended solution:</strong> <strong>Exabytes VPS + Cloudflare</strong> with <strong>300GB storage</strong> at a total of <strong>RM150/month</strong>.
       </div>
     </section>
 
@@ -397,7 +397,7 @@
       <h2>Bottom Line</h2>
       <ul>
         <li><strong>Cheapest simple route:</strong> Exabytes NVMe C2 at RM60/month, keep images/admin where they are first.</li>
-        <li><strong>Best balanced route:</strong> Exabytes NVMe C2 + Cloudflare R2 at about RM73/month for 200GB images.</li>
+        <li><strong>Chosen route:</strong> Exabytes VPS + Cloudflare at RM150/month for 300GB storage.</li>
         <li><strong>If comparing non-Exabytes VPS:</strong> AWS Lightsail looks attractive on entry price, while DigitalOcean and Vultr are solid but not clearly cheaper after converting to RM.</li>
         <li><strong>If images stay on local VPS disk:</strong> cost looks okay at first, but storage growth becomes the long-term problem.</li>
       </ul>
@@ -412,7 +412,7 @@
         <li>https://aws.amazon.com/lightsail/pricing/</li>
         <li>https://developers.cloudflare.com/r2/pricing/</li>
       </ul>
-      <p class="muted">*Approx RM uses a simple rough conversion around 1 USD ≈ RM4.7 for easy internal comparison. Actual billing changes with FX and tax.</p>
+      <p class="muted">*Approximate RM conversion is shown for reference only. Actual billing may vary depending on exchange rate and provider terms.</p>
     </section>
   </div>
 
